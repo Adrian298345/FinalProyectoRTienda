@@ -1,0 +1,84 @@
+<form [formGroup]="searchOrderForm" class="search-form" (submit)="submitForm()">
+    <mat-form-field appearance="outline" class="search-input">
+        <mat-label>Ingresa el ID de seguimiento para buscar</mat-label>
+        <input matInput formControlName="trackingId">
+        <button mat-button matSuffix color="primary" [disabled]="searchOrderForm.invalid">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
+</form>
+
+<div class="order-details-container" *ngIf="order">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Detalles del Pedido</mat-card-title>
+        </mat-card-header>
+    
+        <div class="order-detail">
+            ID de Seguimiento: 
+            <strong>{{ order.trackingId }}</strong>
+        </div>
+        <div class="order-detail">
+            Nombre del Usuario: 
+            <strong>{{ order.userName }}</strong>
+        </div>
+        <div class="order-detail">
+            Dirección: 
+            <strong>{{ order.address }}</strong>
+        </div>
+        <div class="order-detail">
+            Monto: 
+            <strong>{{ order.amount | currency }}</strong>
+        </div>
+        <div class="order-detail">
+            Estado: 
+            <strong>{{ order.orderStatus }}</strong>
+        </div>
+        <div class="order-detail">
+            Fecha: 
+            <strong>{{ order.date | date }}</strong>
+        </div>
+    </mat-card>
+</div>
+<form [formGroup]="searchOrderForm" class="search-form" (submit)="submitForm()">
+    <mat-form-field appearance="outline" class="search-input">
+        <mat-label>Ingresa el ID de seguimiento para buscar</mat-label>
+        <input matInput formControlName="trackingId">
+        <button mat-button matSuffix color="primary" [disabled]="searchOrderForm.invalid">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
+</form>
+
+<div class="order-details-container" *ngIf="order">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Detalles del Pedido</mat-card-title>
+        </mat-card-header>
+    
+        <div class="order-detail">
+            ID de Seguimiento: 
+            <strong>{{ order.trackingId }}</strong>
+        </div>
+        <div class="order-detail">
+            Nombre del Usuario: 
+            <strong>{{ order.userName }}</strong>
+        </div>
+        <div class="order-detail">
+            Dirección: 
+            <strong>{{ order.address }}</strong>
+        </div>
+        <div class="order-detail">
+            Monto: 
+            <strong>{{ order.amount | currency }}</strong>
+        </div>
+        <div class="order-detail">
+            Estado: 
+            <strong>{{ order.orderStatus }}</strong>
+        </div>
+        <div class="order-detail">
+            Fecha: 
+            <strong>{{ order.date | date }}</strong>
+        </div>
+    </mat-card>
+</div>

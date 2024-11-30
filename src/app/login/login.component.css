@@ -1,0 +1,174 @@
+:root {
+    --primary-color: #3f51b5;
+    --secondary-color: #303f9f;
+    --error-color: #f44336;
+    --background-color: #f5f5f5;
+    --gradient-color: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradiente dinámico */
+    --card-shadow: rgba(0, 0, 0, 0.2);
+    --card-hover-shadow: rgba(0, 0, 0, 0.4);
+    --font-color: #333;
+    --font-size-large: 24px;
+    --font-size-medium: 18px;
+    --font-size-small: 16px;
+    --spacing-large: 24px;
+    --spacing-medium: 16px;
+    --spacing-small: 8px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(
+            rgba(63, 81, 181, 0.7), 
+            rgba(30, 136, 229, 0.7)
+        ),
+        url('src/imagenes/fondo-tienda.jpg'); /* Cambia esta URL por la ruta correcta */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--font-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: gradientAnimation 8s infinite alternate ease-in-out;
+}
+
+@keyframes gradientAnimation {
+    0% { background: linear-gradient(rgba(63, 81, 181, 0.8), rgba(30, 136, 229, 0.8)); }
+    50% { background: linear-gradient(rgba(30, 136, 229, 0.8), rgba(63, 81, 181, 0.8)); }
+    100% { background: linear-gradient(rgba(63, 81, 181, 0.8), rgba(30, 136, 229, 0.8)); }
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+mat-card {
+    max-width: 400px;
+    width: 100%;
+    padding: var(--spacing-large);
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+mat-card:hover {
+    transform: scale(1.03);
+    background: var(--gradient-color);
+    box-shadow: 0 8px 16px var(--card-hover-shadow);
+}
+
+mat-card-title {
+    text-align: center;
+    font-size: var(--font-size-large);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-large);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+    width: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: var(--spacing-medium);
+    animation: slideIn 0.6s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+button {
+    width: 100%;
+    padding: var(--spacing-medium);
+    background: var(--gradient-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: var(--font-size-medium);
+    cursor: pointer;
+    box-shadow: 0 4px 8px var(--card-shadow);
+    transition: background 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px var(--card-hover-shadow);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 6px var(--card-shadow);
+}
+
+.error-snackbar {
+    background-color: var(--error-color) !important;
+    color: #fff;
+    padding: var(--spacing-small);
+    font-weight: bold;
+    text-align: center;
+    border-radius: 6px;
+    animation: bounceIn 0.5s ease;
+}
+
+@keyframes bounceIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    mat-card {
+        max-width: 90%;
+        padding: var(--spacing-medium);
+    }
+
+    mat-card-title {
+        font-size: var(--font-size-medium);
+    }
+
+    form {
+        gap: var(--spacing-small);
+    }
+
+    button {
+        font-size: var(--font-size-small);
+    }
+}

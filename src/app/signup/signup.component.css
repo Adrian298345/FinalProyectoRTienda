@@ -1,0 +1,155 @@
+:root {
+    --primary-color: #3f51b5;
+    --secondary-color: #303f9f;
+    --error-color: #f44336;
+    --background-color: #f4f4f4;
+    --card-shadow: rgba(0, 0, 0, 0.2);
+    --card-hover-shadow: rgba(0, 0, 0, 0.3);
+    --card-border-radius: 12px;
+    --font-color: #333;
+    --font-size-large: 24px;
+    --font-size-medium: 20px;
+    --font-size-small: 16px;
+    --spacing-large: 24px;
+    --spacing-medium: 16px;
+    --spacing-small: 8px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('src/imagenes/fondo-tienda.jpg') no-repeat center center / cover, 
+                linear-gradient(135deg, rgba(106, 17, 203, 0.6), rgba(37, 117, 252, 0.6)); /* Superposición dinámica */
+    animation: gradientAnimation 8s infinite alternate ease-in-out;
+}
+
+@keyframes gradientAnimation {
+    0% { background: url('src/imagenes/fondo-tienda.jpg') no-repeat center center / cover, linear-gradient(135deg, rgba(106, 17, 203, 0.6), rgba(37, 117, 252, 0.6)); }
+    50% { background: url('src/imagenes/fondo-tienda.jpg') no-repeat center center / cover, linear-gradient(135deg, rgba(37, 117, 252, 0.6), rgba(106, 17, 203, 0.6)); }
+    100% { background: url('src/imagenes/fondo-tienda.jpg') no-repeat center center / cover, linear-gradient(135deg, rgba(106, 17, 203, 0.6), rgba(30, 58, 138, 0.6)); }
+}
+
+mat-card {
+    max-width: 400px;
+    width: 100%;
+    padding: var(--spacing-large);
+    background-color: #fff;
+    border-radius: var(--card-border-radius);
+    box-shadow: 0 6px 12px var(--card-shadow);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+mat-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.2), transparent 70%);
+    transform: rotate(0deg);
+    transition: transform 1s linear;
+    pointer-events: none;
+    z-index: -1;
+}
+
+mat-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px var(--card-hover-shadow);
+}
+
+mat-card:hover::before {
+    transform: rotate(360deg);
+}
+
+mat-card-title {
+    text-align: center;
+    font-size: var(--font-size-large);
+    margin-bottom: var(--spacing-large);
+    color: var(--primary-color);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+button {
+    width: 100%;
+    padding: var(--spacing-medium);
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: var(--font-size-small);
+    cursor: pointer;
+    box-shadow: 0 4px 6px var(--card-shadow);
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px var(--card-hover-shadow);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 6px var(--card-shadow);
+}
+
+.error-snackbar {
+    background-color: var(--error-color) !important;
+    color: #fff !important;
+    font-weight: bold;
+    text-align: center;
+    padding: var(--spacing-small);
+    border-radius: var(--card-border-radius);
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+@media screen and (max-width: 500px) {
+    mat-card {
+        max-width: 90%;
+        padding: var(--spacing-medium);
+    }
+
+    mat-card-title {
+        font-size: var(--font-size-medium);
+    }
+
+    form {
+        gap: var(--spacing-small);
+    }
+
+    button {
+        font-size: var(--font-size-small);
+    }
+}
